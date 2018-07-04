@@ -116,6 +116,10 @@ trait QueriesRelationships
         if ($relation instanceof BelongsToMany && ! $this->isAcrossConnections($relation)) {
             return $this->model->getKeyName();
         }
+        
+        if ($relation instanceof \Jenssegers\Mongodb\Relations\BelongsToMany && ! $this->isAcrossConnections($relation)) {
+            return $this->model->getKeyName();
+        }
 
         throw new \Exception(class_basename($relation) . ' is not supported for hybrid query constraints.');
     }
